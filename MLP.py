@@ -57,9 +57,9 @@ class SKLearnMLP(object):
 if __name__ == "__main__":
     classifiers = []
     #alpha_values = [1e-1, 1e-2, 1e-3, 1e-4, 1e-5]
-    neural_layouts = [(5, 5, 5, 5, 5), (25, ), (5, 4, 3, 2, 1), (10, 5, 3, 2, 5)]
+    neural_layouts = [(5, 5, 5, 5, 5), (25, ), (5, 4, 3, 2, 1), (10, 5, 3, 2, 5), (25,25)]
     for layout in neural_layouts:
-        classifiers.append(neural_network.MLPRegressor(max_iter = 10000, hidden_layer_sizes=layout, early_stopping = True))
+        classifiers.append(neural_network.MLPRegressor(solver = 'lbfgs', max_iter = 500, hidden_layer_sizes=layout, early_stopping = True, random_state=1, alpha=.10))
     i = 0
     print classifiers
     for classifier in classifiers:
